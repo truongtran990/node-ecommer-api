@@ -1,5 +1,6 @@
 let express = require('express');
 let path = require('path');
+let fs = require('fs');
 
 let app = express();
 
@@ -22,6 +23,13 @@ app.get('/process_get', function (req, res) {
     };
     console.log(response);
     res.end(JSON.stringify(response));
+});
+
+app.get('/listUsers', function (req, res) {
+    fs.readFile(__dirname + "/" + "/database/users.json", 'utf8', function (err, data) {
+        console.log(data);
+        res.end(data);
+    });
 });
 
 app.use(personRoute);
