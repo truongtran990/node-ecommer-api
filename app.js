@@ -10,6 +10,8 @@ const orderRoutes = require('./api/routes/orders');
 
 database.connect();
 
+mongoose.Promise = global.Promise;
+
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({
     extended: false
